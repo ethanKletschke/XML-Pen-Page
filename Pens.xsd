@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="pens">
+    <xs:annotation>
+      <xs:documentation>
+        The root element of the pen document.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element name="pen" minOccurs="1" maxOccurs="unbounded">
+          <!-- Documentation -->
+          <xs:annotation>
+            <xs:documentation>
+              The element holding each pen's data.
+            </xs:documentation>
+          </xs:annotation>
+
+          <!-- Type Definition -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="brand" type="str">
+                <xs:annotation>
+                  <xs:documentation>
+                    The name of the pen's brand (Pentel, Parker, Pilot, Montblanc, etc.).
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="model" type="str">
+                <xs:annotation>
+                  <xs:documentation>
+                    The pen's model (i.e. EnerGel, Jotter, Metropolitan, Meisterstuck 149, etc.).
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="type" type="pen-types">
+                <xs:annotation>
+                  <xs:documentation>
+                    The type of pen.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+
+            <!-- Pen ID Attribute -->
+            <xs:attribute name="pen-id" use="required">
+              <xs:annotation>
+                <xs:documentation>
+                  The pen's unique ID.
+                </xs:documentation>
+              </xs:annotation>
+
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:pattern value="\#[0-9]{4}\_[A-Z]{3}\_[a-z]{3,4}\-[BFGOR]">
+                    <xs:annotation>
+                      <xs:documentation>
+                        The pen's unique ID has the format #0000_AAA_BBBB-TP,
+                        where "#0000" is the unique sequential number assigned to the
+                        pen, AAA is the first 3 capitalised letters of the pen's brand,
+                        BBBB is the first 3-4 lowercase letters of the pen's model, and
+                        T is the singular uppercase letter for the pen's type (B for ballpoint, F for fountain,
+                        G for Gel, O for Other, or R for Rollerball).
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:pattern>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="str">
+    <xs:annotation>
+      <xs:documentation>A general type based off xs:string with restrictions which allow for more valid data.</xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <xs:minLength value="3" />
+      <xs:maxLength value="25" />
+      <xs:pattern value="[A-Za-z0-9 ]*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="pen-types">
+    <xs:annotation>
+      <xs:documentation>
+        The specific type of pen (i.e. ballpoint, fountain pen, etc.).
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ballpoint" />
+      <xs:enumeration value="Fountain" />
+      <xs:enumeration value="Gel" />
+      <xs:enumeration value="Other" />
+      <xs:enumeration value="Rollerball" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

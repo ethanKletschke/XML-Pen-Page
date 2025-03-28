@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./Pens.xsl" type="text/xsl"?>
+<pens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="./Pens.xsd">
+    <pen pen-id="#0001_PAR_tter-B">
+        <brand>Parker</brand>
+        <model>Jotter</model>
+        <type>Ballpoint</type>
+    </pen>
+    <pen pen-id="#0002_PEN_rgel-G">
+        <brand>Pentel</brand>
+        <model>Energel</model>
+        <type>Gel</type>
+    </pen>
+    <pen pen-id="#0003_MON_uck-F">
+        <brand>Montblanc</brand>
+        <model>Meisterstuck 149</model>
+        <type>Fountain</type>
+    </pen>
+</pens>
