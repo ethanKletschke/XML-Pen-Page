@@ -6,15 +6,20 @@
         <brand>Parker</brand>
         <model>Jotter</model>
         <type>Ballpoint</type>
+        <price>NF*</price>
     </pen>
     <pen pen-id="#0002_PEN_rgel-G">
         <brand>Pentel</brand>
         <model>Energel</model>
         <type>Gel</type>
+        <price>NF*</price>
     </pen>
     <pen pen-id="#0003_MON_uck-F">
         <brand>Montblanc</brand>
         <model>Meisterstuck 149</model>
         <type>Fountain</type>
+        <price src="https://www.montblanc.com/en-za/fountain-pens_cod1647597318120615.html">
+            R14,000.00
+        </price>
     </pen>
 </pens>
